@@ -5,12 +5,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.envelopebudget.ui.core.BudgetRowHeader
+import com.example.envelopebudget.ui.core.BudgetRowItem
+import com.example.envelopebudget.ui.core.ToBeBudgetedBanner
 import com.example.envelopebudget.ui.theme.EnvelopeBudgetTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,12 +20,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EnvelopeBudgetTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+                Surface {
+                    SampleBudget()
                 }
             }
         }
@@ -31,8 +29,41 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello there 2, $name!")
+fun SampleBudget() {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        item {
+            ToBeBudgetedBanner()
+        }
+
+        item {
+            BudgetRowHeader()
+        }
+        item {
+            BudgetRowItem()
+        }
+        item {
+            BudgetRowItem()
+        }
+        item {
+            BudgetRowItem()
+        }
+        item {
+            BudgetRowItem()
+        }
+
+        item {
+            BudgetRowHeader()
+        }
+        item {
+            BudgetRowItem()
+        }
+        item {
+            BudgetRowItem()
+        }
+    }
 }
 
 @Preview(
@@ -50,7 +81,7 @@ private fun LoginContentPreview() {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Greeting("Android")
+            SampleBudget()
         }
     }
 }
